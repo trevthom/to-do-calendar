@@ -1,0 +1,262 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 20%;
+    padding: 15px;
+    background-color: #f0f0f0;
+    overflow-y: auto;
+}
+
+.calendar {
+    width: 80%;
+    padding: 15px;
+    background-color: #fff;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    height: calc(100vh - 100px); /* Adjust to fit window */
+}
+
+.day-header {
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    background-color: #ddd;
+    font-size: 0.9em;
+}
+
+.day {
+    border: 1px solid #ccc;
+    padding: 8px;
+    min-height: 80px; /* Reduced height to fit 6 weeks */
+    cursor: pointer;
+    font-size: 0.8em;
+    overflow-y: auto;
+}
+
+.day:hover {
+    background-color: #f9f9f9;
+}
+
+.day .date {
+    font-weight: bold;
+}
+
+.event, .todo-item {
+    margin-top: 3px;
+    padding: 4px;
+    background-color: #e0f7fa;
+    border-radius: 2px;
+    font-size: 0.75em;
+}
+
+/* event-popup-v3: Make events clickable */
+.event {
+    cursor: pointer;
+}
+
+.event:hover {
+    opacity: 0.8;
+}
+
+.todo-item.overdue {
+    background-color: #ffccbc;
+}
+
+.todo-item input[type="checkbox"] {
+    margin-right: 4px;
+}
+
+/* event-popup-v2: Custom event popup styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.event-popup {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.event-popup h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="time"],
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95em;
+    box-sizing: border-box;
+}
+
+.color-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.color-option:hover {
+    border-color: #999;
+}
+
+.color-option.selected {
+    border-color: #333;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.popup-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.2s;
+}
+
+.popup-buttons .btn-add {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.popup-buttons .btn-add:hover {
+    background-color: #45a049;
+}
+
+.popup-buttons .btn-cancel {
+    background-color: #f44336;
+    color: white;
+}
+
+.popup-buttons .btn-cancel:hover {
+    background-color: #da190b;
+}
+
+/* event-popup-v3: Edit/Delete popup styles */
+.popup-buttons .btn-update {
+    background-color: #2196F3;
+    color: white;
+}
+
+.popup-buttons .btn-update:hover {
+    background-color: #0b7dda;
+}
+
+.popup-buttons .btn-delete {
+    background-color: #ff9800;
+    color: white;
+}
+
+.popup-buttons .btn-delete:hover {
+    background-color: #e68900;
+}
+
+.delete-options {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #fff3cd;
+    border-radius: 4px;
+    border: 1px solid #ffc107;
+}
+
+.delete-options h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #856404;
+    font-size: 0.95em;
+}
+
+.delete-options button {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    background-color: #ff9800;
+    color: white;
+}
+
+.delete-options button:hover {
+    background-color: #e68900;
+}
+
+.delete-options button:last-child {
+    margin-bottom: 0;
+}
+
+.delete-options .btn-delete-cancel {
+    background-color: #6c757d;
+}
+
+.delete-options .btn-delete-cancel:hover {
+    background-color: #5a6268;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar and To-Do App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>To-Do List</h2>
+            <input id="new-todo" placeholder="New task">
+            <button onclick="addTodo()">Add</button>
+            <ul id="todo-list"></ul>
+        </div>
+        <div class="calendar">
+            <div id="calendar-header">
+                <button onclick="prevWeeks()">Previous</button>
+                <h2 id="calendar-title"></h2>
+                <button onclick="nextWeeks()">Next</button>
+            </div>
+            <div id="calendar"></div>
+        </div>
+    </div>
+
+    <!-- event-popup-v2: Custom event popup modal -->
+    <div id="event-modal" class="modal-overlay">
+        <div class="event-popup">
+            <h3>Add Event</h3>
+            <p id="selected-date-display" style="margin: -10px 0 15px 0; color: #666; font-size: 0.9em;"></p>
+            <form id="event-form">
+                <div class="form-group">
+                    <label for="event-title">Event Title *</label>
+                    <input type="text" id="event-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-recurrence">Recurrence</label>
+                    <select id="event-recurrence">
+                        <option value="none">None (One-time)</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="biweekly">Biweekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-time">Time (optional)</label>
+                    <input type="time" id="event-time">
+                </div>
+                
+                <div class="form-group">
+                    <label>Event Color</label>
+                    <div class="color-options" id="color-options">
+                        <div class="color-option selected" data-color="#e0f7fa" style="background-color: #e0f7fa;"></div>
+                        <div class="color-option" data-color="#c8e6c9" style="background-color: #c8e6c9;"></div>
+                        <div class="color-option" data-color="#fff9c4" style="background-color: #fff9c4;"></div>
+                        <div class="color-option" data-color="#ffccbc" style="background-color: #ffccbc;"></div>
+                        <div class="color-option" data-color="#e1bee7" style="background-color: #e1bee7;"></div>
+                        <div class="color-option" data-color="#f8bbd0" style="background-color: #f8bbd0;"></div>
+                        <div class="color-option" data-color="#b3e5fc" style="background-color: #b3e5fc;"></div>
+                        <div class="color-option" data-color="#dcedc8" style="background-color: #dcedc8;"></div>
+                    </div>
+                </div>
+                
+                <div class="popup-buttons">
+                    <button type="submit" class="btn-add">Add Event</button>
+                    <button type="button" class="btn-cancel" onclick="closeEventPopup()">Cancel</button>
+                </div>
+                
+                <!-- event-popup-v3: Edit/Delete buttons (hidden by default) -->
+                <div class="popup-buttons" id="edit-buttons" style="display: none;">
+                    <button type="submit" class="btn-update">Update Event</button>
+                    <button type="button" class="btn-delete" onclick="showDeleteOptions()">Delete</button>
+                    <button type="button" class="btn-cancel" onclick="closeEventPopup()">Cancel</button>
+                </div>
+                
+                <!-- event-popup-v3: Delete options (hidden by default) -->
+                <div class="delete-options" id="delete-options" style="display: none;">
+                    <h4>Delete Event</h4>
+                    <button onclick="deleteEvent('single')">Delete This Event Only</button>
+                    <button onclick="deleteEvent('all')">Delete All Recurring Events</button>
+                    <button class="btn-delete-cancel" onclick="hideDeleteOptions()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
