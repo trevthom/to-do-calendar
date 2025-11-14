@@ -2,6 +2,142 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* calendar-v5: Dark mode styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .sidebar {
+    background-color: #2d2d2d;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .sidebar h2,
+body.dark-mode .sidebar h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .sidebar h3 {
+    border-top-color: #444;
+}
+
+body.dark-mode .todo-input-group input {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+body.dark-mode .todo-input-group input:focus {
+    border-color: #4CAF50;
+}
+
+body.dark-mode .todo-item-enhanced {
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+body.dark-mode .todo-item-enhanced:hover {
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .todo-item-enhanced .todo-text {
+    color: #e0e0e0;
+}
+
+body.dark-mode .todo-item-enhanced.completed .todo-text {
+    color: #888;
+}
+
+body.dark-mode .todo-date-info {
+    background-color: #1e3a5f;
+    color: #a0c4e8;
+}
+
+body.dark-mode .todo-date-info.overdue {
+    background-color: #5d2a2a;
+    color: #ff9999;
+}
+
+body.dark-mode .calendar {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode #calendar-header h2 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .day-header {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .day {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-mode .day:hover {
+    background-color: #3a3a3a;
+}
+
+body.dark-mode .day.fullscreen {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .fullscreen-toggle {
+    opacity: 0.6;
+}
+
+body.dark-mode .fullscreen-toggle:hover {
+    opacity: 1;
+}
+
+body.dark-mode .event-popup {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .event-popup h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-group label {
+    color: #b0b0b0;
+}
+
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group input[type="time"],
+body.dark-mode .form-group input[type="date"],
+body.dark-mode .form-group select {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+body.dark-mode .delete-options {
+    background-color: #3d3420;
+    border-color: #8b7a00;
+}
+
+body.dark-mode .delete-options h4 {
+    color: #d4c087;
+}
+
+body.dark-mode .event {
+    color: #1a1a1a;
+}
+
+body.dark-mode .todo-item {
+    color: #1a1a1a;
+}
+
+body.dark-mode .day .date.current-date {
+    color: #1a1a1a;
 }
 
 .container {
@@ -11,9 +147,169 @@ body {
 
 .sidebar {
     width: 20%;
-    padding: 15px;
-    background-color: #f0f0f0;
+    padding: 20px;
+    background-color: #f8f9fa;
     overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.sidebar h3 {
+    color: #555;
+    font-size: 1.1em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-top: 20px;
+    border-top: 2px solid #e0e0e0;
+}
+
+/* calendar-v1: Enhanced todo input styling */
+.todo-input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.todo-input-group input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95em;
+    transition: border-color 0.2s;
+}
+
+.todo-input-group input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.btn-add-todo {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-add-todo:hover {
+    background-color: #45a049;
+}
+
+/* calendar-v1: Enhanced todo list item styling */
+#todo-list, #completed-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: box-shadow 0.2s;
+}
+
+.todo-item-enhanced:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item-enhanced.completed {
+    opacity: 0.7;
+}
+
+.todo-item-enhanced input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.todo-item-enhanced .todo-text {
+    flex: 1;
+    color: #333;
+    font-size: 0.95em;
+    word-break: break-word;
+}
+
+.todo-item-enhanced.completed .todo-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.todo-item-enhanced .todo-buttons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-todo-action {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.btn-todo-action {
+    background-color: #2196F3;
+    color: white;
+}
+
+.btn-todo-action:hover {
+    background-color: #0b7dda;
+}
+
+.btn-todo-edit {
+    background-color: #2196F3;
+}
+
+.btn-todo-edit:hover {
+    background-color: #0b7dda;
+}
+
+.btn-todo-delete {
+    background-color: #f44336;
+}
+
+.btn-todo-delete:hover {
+    background-color: #da190b;
+}
+
+.todo-date-info {
+    font-size: 0.85em;
+    color: #666;
+    background-color: #e3f2fd;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.todo-date-info.overdue {
+    background-color: #ffccbc;
+    color: #c62828;
+    font-weight: 500;
+}
+
+#completed-section {
+    margin-top: 20px;
 }
 
 .calendar {
@@ -27,6 +323,39 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    position: relative;
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+#calendar-header h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #333;
+    font-size: 1.3em;
+}
+
+#calendar-header button {
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+#calendar-header button:hover {
+    background-color: #0b7dda;
 }
 
 #calendar {
@@ -51,6 +380,7 @@ body {
     cursor: pointer;
     font-size: 0.8em;
     overflow-y: auto;
+    position: relative;
 }
 
 .day:hover {
@@ -59,6 +389,70 @@ body {
 
 .day .date {
     font-weight: bold;
+}
+
+/* event-popup-v5: Current date highlighting */
+.day .date.current-date {
+    display: inline-block;
+    background-color: #b3e5fc;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+/* event-popup-v5: Fullscreen toggle icon */
+.fullscreen-toggle {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    z-index: 10;
+}
+
+.fullscreen-toggle:hover {
+    opacity: 1;
+}
+
+.fullscreen-toggle svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* event-popup-v5: Fullscreen day view */
+.day.fullscreen {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    z-index: 999;
+    background-color: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 25px;
+    font-size: 1.2em;
+    transition: all 0.3s ease-in-out;
+    overflow-y: auto;
+    min-height: unset;
+}
+
+.day.fullscreen .date {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.day.fullscreen .event,
+.day.fullscreen .todo-item {
+    font-size: 1em;
+    padding: 10px;
+    margin-top: 8px;
+}
+
+.day:not(.fullscreen) {
+    transition: all 0.3s ease-in-out;
 }
 
 .event, .todo-item {
@@ -133,6 +527,7 @@ body {
 
 .form-group input[type="text"],
 .form-group input[type="time"],
+.form-group input[type="date"],
 .form-group select {
     width: 100%;
     padding: 8px;
@@ -140,6 +535,33 @@ body {
     border-radius: 4px;
     font-size: 0.95em;
     box-sizing: border-box;
+}
+
+/* calendar-v4: Date input group with clear button */
+.date-input-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.date-input-group input[type="date"] {
+    flex: 1;
+}
+
+.btn-clear-date {
+    padding: 8px 16px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.btn-clear-date:hover {
+    background-color: #da190b;
 }
 
 .color-options {
@@ -259,4 +681,21 @@ body {
 
 .delete-options .btn-delete-cancel:hover {
     background-color: #5a6268;
+}
+
+/* event-popup-v5: Fullscreen backdrop */
+.fullscreen-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fullscreen-backdrop.active {
+    display: block;
 }

@@ -10,19 +10,36 @@
     <div class="container">
         <div class="sidebar">
             <h2>To-Do List</h2>
-            <input id="new-todo" placeholder="New task">
-            <button onclick="addTodo()">Add</button>
+            <div class="todo-input-group">
+                <input id="new-todo" placeholder="New task" onkeypress="if(event.key === 'Enter') addTodo()">
+                <button class="btn-add-todo" onclick="addTodo()">Add</button>
+            </div>
             <ul id="todo-list"></ul>
+            <div id="completed-section" style="display: none;">
+                <h3 onclick="toggleCompletedSection()" style="cursor: pointer; user-select: none;">
+                    <span id="completed-toggle">▼</span> Completed Tasks
+                </h3>
+                <ul id="completed-list" style="display: block;"></ul>
+            </div>
         </div>
         <div class="calendar">
             <div id="calendar-header">
-                <button onclick="prevWeeks()">Previous</button>
+                <div class="header-left">
+                    <button onclick="prevWeeks()">Previous</button>
+                    <button onclick="goToToday()">Today</button>
+                </div>
                 <h2 id="calendar-title"></h2>
-                <button onclick="nextWeeks()">Next</button>
+                <div class="header-right">
+                    <button onclick="toggleDarkMode()" id="dark-mode-btn">Dark Mode: On</button>
+                    <button onclick="nextWeeks()">Next</button>
+                </div>
             </div>
             <div id="calendar"></div>
         </div>
     </div>
+
+    <!-- event-popup-v5: Fullscreen backdrop -->
+    <div id="fullscreen-backdrop" class="fullscreen-backdrop"></div>
 
     <!-- event-popup-v2: Custom event popup modal -->
     <div id="event-modal" class="modal-overlay">
@@ -31,8 +48,17 @@
             <p id="selected-date-display" style="margin: -10px 0 15px 0; color: #666; font-size: 0.9em;"></p>
             <form id="event-form">
                 <div class="form-group">
-                    <label for="event-title">Event Title *</label>
+                    <label for="event-title">Title *</label>
                     <input type="text" id="event-title" required>
+                </div>
+                
+                <!-- calendar-v3: Date field for all events/tasks -->
+                <div class="form-group">
+                    <label for="event-date">Date *</label>
+                    <div class="date-input-group">
+                        <input type="date" id="event-date" required>
+                        <button type="button" class="btn-clear-date" onclick="clearDate()">Clear</button>
+                    </div>
                 </div>
                 
                 <div class="form-group">
